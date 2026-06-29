@@ -1,75 +1,118 @@
 # Operating Systems Components Suite
 
-A collection of core operating system components implemented from scratch in **C/C++** for Unix/Linux. This project demonstrates low-level systems programming concepts including process management, scheduling, executable loading, shell implementation, and multithreading.
+A collection of operating systems projects developed as part of the **Operating Systems Laboratory** course. This repository demonstrates the implementation of fundamental operating system components from scratch using **C**, **C++**, POSIX APIs, and Unix/Linux system programming concepts.
 
-## Features
-
-- **Custom ELF Loader**
-  - Loads and executes 32-bit ELF executables.
-  - Implements demand paging for efficient memory utilization.
-  - Parses ELF headers and program segments manually.
-
-- **Unix Shell**
-  - Command parsing and execution.
-  - Support for foreground and background processes.
-  - Built-in shell commands.
-  - Process management using Unix system calls.
-
-- **Process Scheduler**
-  - Priority-based scheduling algorithm.
-  - Daemon process support.
-  - Process creation and lifecycle management.
-  - Scheduling policy implementation.
-
-- **Multithreading Library**
-  - User-level thread management.
-  - Context switching.
-  - Thread synchronization primitives.
-  - Concurrent execution support.
+The projects cover executable loading, process scheduling, shell implementation, multithreading, and kernel scheduling, providing practical experience with low-level systems programming and operating system internals.
 
 ---
 
-## Tech Stack
+## Projects
 
-- **Language:** C, C++
-- **Build System:** Makefile
-- **Platform:** Unix/Linux
-- **Concepts Used:**
-  - ELF Format
-  - Demand Paging
-  - Virtual Memory
-  - Process Scheduling
-  - Context Switching
-  - POSIX System Calls
-  - Threads and Synchronization
+### 1. ELF Loader
 
----
+Implemented a custom loader capable of loading and executing 32-bit ELF executables.
 
-## Learning Objectives
+**Features**
+- Manual parsing of ELF and Program Headers
+- Memory mapping using `mmap`
+- Dynamic loading of executable segments
+- Execution transfer to the program entry point
+- Shared library (`lib_simpleloader.so`) and launcher implementation
 
-This project explores fundamental operating system concepts, including:
-
-- Process creation and execution
-- Virtual memory management
-- ELF binary loading
-- Demand paging
-- CPU scheduling
-- Shell implementation
-- User-level multithreading
-- Concurrency and synchronization
-- Linux system programming
+**Concepts**
+- ELF Binary Format
+- Virtual Memory
+- Memory Mapping
+- Executable Loading
 
 ---
 
-## Build
+### 2. Unix Shell & CPU Scheduler
 
-Compile the project using Make:
+Developed a Unix-like shell integrated with a CPU scheduler through inter-process communication.
+
+**Features**
+- Command parsing and execution
+- Scheduler implemented as a separate process
+- Communication using Unix pipes
+- Configurable CPU count and time slice
+- Round-Robin scheduling
+- Job queue management
+- Process lifecycle management
+
+**Concepts**
+- Inter-Process Communication (IPC)
+- Process Scheduling
+- Fork and Exec
+- Pipes
+- Context Switching
+
+---
+
+### 3. SimpleMultithreader
+
+Implemented a lightweight multithreading abstraction using POSIX Pthreads.
+
+**Features**
+- One-dimensional `parallel_for`
+- Two-dimensional `parallel_for`
+- Support for C++11 lambda expressions
+- Static workload distribution
+- Execution time measurement
+
+**Concepts**
+- POSIX Threads
+- Parallel Programming
+- Thread Synchronization
+- Concurrent Execution
+
+---
+
+### 4. EGOS-2000 Kernel Extensions
+
+Extended the EGOS-2000 educational operating system with additional shell utilities and an MLFQ scheduler.
+
+**Features**
+- Custom shell utilities (`grep`, `wcl`)
+- Multi-Level Feedback Queue (MLFQ) scheduler
+- Five priority levels
+- Dynamic priority adjustment
+- Periodic priority boosting
+- Process lifecycle statistics including turnaround time, response time, and CPU execution time
+
+**Concepts**
+- Kernel Scheduling
+- File System Operations
+- System Calls
+- Scheduling Policies
+- Performance Evaluation
+
+---
+
+## Technologies
+
+- C
+- C++
+- POSIX Threads (Pthreads)
+- Unix/Linux System Calls
+- Makefiles
+- ELF Binary Format
+- Memory Mapping (`mmap`)
+- Inter-Process Communication (Pipes)
+
+---
+
+## Building
+
+Each project contains its own Makefile.
+
+Build a project by navigating to its directory and running:
 
 ```bash
 make
 ```
 
-Clean build files:
+To clean generated files:
 
 ```bash
 make clean
@@ -77,18 +120,36 @@ make clean
 
 ---
 
-## Running
+## Operating Systems Concepts Covered
 
-Navigate to the required component and execute the corresponding binary.
-
-Refer to the documentation within each component for usage details.
+- ELF executable loading
+- Virtual memory management
+- Memory mapping
+- Process creation and execution
+- Unix shell implementation
+- Inter-process communication
+- CPU scheduling
+- Round-Robin Scheduling
+- Multi-Level Feedback Queue (MLFQ)
+- User-level multithreading
+- Context switching
+- Thread synchronization
+- Linux system programming
+- Kernel scheduling
+- File system operations
 
 ---
 
-## Highlights
+## Contributors
 
-- Built multiple operating system components from scratch.
-- Implemented demand paging for 32-bit ELF executables to reduce memory overhead.
-- Developed a priority-based scheduler with daemon process handling.
-- Designed a Unix shell supporting process creation and management.
-- Implemented multithreading support for concurrent execution.
+**Nakul Zutshi (2024361)**
+- ELF Loader implementation
+- CPU Scheduler logic
+- Two-dimensional multithreading abstraction
+- MLFQ scheduler and kernel integration
+
+**Rijul Agarwal (2024459)**
+- ELF Loader execution pipeline
+- Shell implementation and IPC
+- One-dimensional multithreading abstraction
+- Shell utilities and file-system operations
